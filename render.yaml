@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: xcom-translate-proxy
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: TRANSLATE_PROXY_TOKEN
+        sync: false
+      - key: RATE_LIMIT_PER_MINUTE
+        value: 60
+      - key: MAX_TEXT_CHARS
+        value: 20000
+      - key: MAX_CHARS_PER_SEGMENT
+        value: 4200
+      - key: CACHE_MAX_ITEMS
+        value: 2048
+      - key: CACHE_TTL_SECONDS
+        value: 86400
