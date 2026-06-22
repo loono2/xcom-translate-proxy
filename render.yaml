@@ -12,6 +12,10 @@ services:
         value: 3.12.8
       - key: TRANSLATE_PROXY_TOKEN
         sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        value: deepseek/deepseek-v4-flash
       - key: RATE_LIMIT_PER_MINUTE
         value: 60
       - key: MAX_TEXT_CHARS
